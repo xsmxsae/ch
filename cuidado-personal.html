@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- =====================================================================
+       PÁGINA: cuidado-personal.html
+       PROYECTO: Chemietechniker
+       DESCRIPCIÓN: Catálogo de productos de CUIDADO PERSONAL con filtros
+                    en el cliente (sin backend) y soporte de modo oscuro.
+       DEPENDENCIAS: styles.css (mismas clases que el home)
+       NOTAS:
+       - Edita el contenido de las tarjetas según tus productos reales.
+       - Para conectar a un backend o CMS, reemplaza el grid con render dinámico.
+       ===================================================================== -->
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO básico -->
+  <title>Cuidado personal | Chemietechniker</title>
+  <meta name="description" content="Línea de cuidado personal Chemietechniker: shampoos, acondicionadores, geles de ducha y jabones de manos. Formulaciones estables y fragancias agradables." />
+  <meta name="author" content="Chemietechniker" />
+
+  <!-- Hoja de estilos principal (misma del home). Asegúrate de que el archivo exista en la misma carpeta. -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Favicon opcional -->
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <!-- =====================================================================
+       HEADER
+       - Marca + navegación principal
+       - Incluye botón de tema (🌙/☀️). El script de abajo recuerda la preferencia.
+       ===================================================================== -->
+  <header class="site-header">
+    <div class="container header-content">
+      <!-- LOGO + marca. Si no tienes logo.svg, cambia la ruta o elimina la <img>. -->
+      <a class="brand" href="index.html" aria-label="Volver al inicio">
+        <img src="assets/logo.svg" alt="Logotipo de Chemietechniker" class="brand__logo" />
+        <span class="brand__name">Chemietechniker</span>
+      </a>
+
+      <!-- Navegación. Agrega o quita enlaces según tus secciones -->
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html#productos">Productos</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#envios">Envíos</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Toggle de tema. Cambia entre light/dark con un click. -->
+      <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       HERO DE CATEGORÍA
+       - Presenta la familia de productos y CTA directas.
+       - Minimal para no robar foco al catálogo.
+       ===================================================================== -->
+  <section class="hero">
+    <div class="container hero__content">
+      <h1 class="hero__title">Cuidado personal</h1>
+      <p class="section__lead">
+        Shampoos, acondicionadores, geles de ducha y jabones de manos con fragancias agradables
+        y desempeño consistente. Formulaciones balanceadas, con pH adecuado y opciones libres de parabenos.
+      </p>
+
+      <!-- CTAs primarias de la página -->
+      <div class="cta">
+        <a class="btn btn--primary" href="#catalogo">Ver catálogo</a>
+        <a class="btn btn--ghost" href="mailto:info@chemietechniker.com">Solicitar cotización</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECCIÓN: Catálogo con filtros (sin backend)
+       - Búsqueda por texto y filtros por categoría (chips).
+       - Los filtros se aplican con JavaScript al contenido renderizado.
+       - Para usar datos reales desde una API, reemplaza el grid por plantilla JS.
+       ===================================================================== -->
+  <section class="section" id="catalogo">
+    <div class="container">
+      <h2>Catálogo</h2>
+      <p class="section__lead">Filtra por categoría o busca por nombre/fragancia/pH.</p>
+
+      <!--
+        FORM DE FILTROS
+        - #q: caja de búsqueda de texto (busca en nombre, descripción, fragancia y pH).
+        - .chip: botones que activan una categoría (data-filter).
+        - NO envía al servidor (onsubmit="return false;").
+      -->
+      <form class="form" id="filterForm" onsubmit="return false;">
+        <div class="form__row">
+          <label for="q">Buscar</label>
+          <input id="q" type="search" placeholder="Ej. 'menta', 'pH 5.5', 'shampoo'">
+        </div>
+
+        <!-- Grupo de chips de categoría -->
+        <div class="form__actions" role="group" aria-label="Filtros por categoría">
+          <button type="button" class="btn btn--ghost chip is-active" data-filter="all">Todos</button>
+          <button type="button" class="btn btn--ghost chip" data-filter="shampoo">Shampoo capilar</button>
+          <button type="button" class="btn btn--ghost chip" data-filter="acondicionador">Acondicionador</button>
+          <button type="button" class="btn btn--ghost chip" data-filter="ducha">Gel de ducha</button>
+          <button type="button" class="btn btn--ghost chip" data-filter="manos">Jabón de manos</button>
+          <button type="button" class="btn btn--ghost chip" data-filter="tratamiento">Tratamientos</button>
+        </div>
+      </form>
+
+      <!--
+        GRID DE PRODUCTOS
+        - Cada tarjeta usa data-attributes para que el filtro funcione:
+          * data-category: shampoo | acondicionador | ducha | manos | tratamiento
+          * data-fragrance: lista de palabras clave (se buscarán en texto)
+          * data-ph: pH declarado (como texto, ej. "5.5")
+        - Reemplaza imágenes, nombres, descripciones y presentaciones según tu catálogo.
+      -->
+      <div class="grid cards" id="productGrid">
+
+        <!-- ================================================================
+             PRODUCTO: Shampoo capilar | EJEMPLO
+             Tips:
+             - Cambia títulos/descripciones/pH/fragancias.
+             - Si tienes imagen, reemplaza .card__media por <img src="ruta.jpg" alt="...">
+             ================================================================ -->
+        <article class="card" data-category="shampoo" data-fragrance="cítricos, limón, verde" data-ph="5.5">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Shampoo Capilar Daily Care</h3>
+            <p>Suave para uso diario. Espuma cremosa y enjuague rápido. pH 5.5.</p>
+            <p><small>Fragancias: cítricos / limón / green tea | Presentaciones: 1L, 5L, 20L</small></p>
+
+            <!-- Acciones: Cotizar / Ficha técnica -->
+            <div class="form__actions">
+              <a class="card__link" href="mailto:info@chemietechniker.com?subject=Shampoo Daily Care">Cotizar</a>
+              <a class="card__link" href="#" aria-disabled="true">Ficha técnica (próximamente)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO: Acondicionador | EJEMPLO -->
+        <article class="card" data-category="acondicionador" data-fragrance="vainilla, floral" data-ph="4.0">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Acondicionador Soft Repair</h3>
+            <p>Desenreda y deja el cabello manejable. Con emolientes ligeros. pH 4.0.</p>
+            <p><small>Fragancias: vainilla / floral | Presentaciones: 1L, 5L, 20L</small></p>
+            <div class="form__actions">
+              <a class="card__link" href="mailto:info@chemietechniker.com?subject=Acondicionador Soft Repair">Cotizar</a>
+              <a class="card__link" href="#" aria-disabled="true">Ficha técnica (próximamente)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO: Gel de ducha | EJEMPLO -->
+        <article class="card" data-category="ducha" data-fragrance="menta, eucalipto, herbal" data-ph="5.5">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Gel de Ducha Fresh Mint</h3>
+            <p>Refrescante con mentol y eucalipto. Sensación energizante. pH 5.5.</p>
+            <p><small>Fragancias: menta / eucalipto | Presentaciones: 1L, 5L</small></p>
+            <div class="form__actions">
+              <a class="card__link" href="mailto:info@chemietechniker.com?subject=Gel de Ducha Fresh Mint">Cotizar</a>
+              <a class="card__link" href="#" aria-disabled="true">Ficha técnica (próximamente)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO: Jabón de manos lavanda | EJEMPLO -->
+        <article class="card" data-category="manos" data-fragrance="lavanda, floral" data-ph="5.5">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Jabón de Manos Lavanda</h3>
+            <p>Lavado suave con aroma lavanda. Libre de parabenos. pH 5.5.</p>
+            <p><small>Fragancias: lavanda | Presentaciones: 1L, 5L, 20L</small></p>
+            <div class="form__actions">
+              <a class="card__link" href="mailto:info@chemietechniker.com?subject=Jabón de Manos Lavanda">Cotizar</a>
+              <a class="card__link" href="#" aria-disabled="true">Ficha técnica (próximamente)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO: Jabón de manos antibacterial | EJEMPLO -->
+        <article class="card" data-category="manos" data-fragrance="neutro" data-ph="5.5">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Jabón de Manos Antibacterial</h3>
+            <p>Fórmula neutra con agentes antibacteriales. pH 5.5.</p>
+            <p><small>Fragancias: neutro | Presentaciones: 1L, 5L, 20L</small></p>
+            <div class="form__actions">
+              <a class="card__link" href="mailto:info@chemietechniker.com?subject=Jabón de Manos Antibacterial">Cotizar</a>
+              <a class="card__link" href="#" aria-disabled="true">Ficha técnica (próximamente)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO: Mascarilla capilar | EJEMPLO -->
+        <article class="card" data-category="tratamiento" data-fragrance="argán, dulce" data-ph="4.5">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Mascarilla Capilar Argán</h3>
+            <p>Nutrición profunda con aceite de argán. Ideal semanalmente. pH 4.5.</p>
+            <p><small>Fragancias: argán | Presentaciones: 500 mL, 1L</small></p>
+            <div class="form__actions">
+              <a class="card__link" href="mailto:info@chemietechniker.com?subject=Mascarilla Capilar Argán">Cotizar</a>
+              <a class="card__link" href="#" aria-disabled="true">Ficha técnica (próximamente)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO: Jabón de manos espuma | EJEMPLO -->
+        <article class="card" data-category="manos" data-fragrance="cítrico, naranja" data-ph="5.5">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Jabón de Manos Espuma Citrus</h3>
+            <p>Rendimiento alto en dispensadores espumadores. pH 5.5.</p>
+            <p><small>Fragancias: cítrico | Presentaciones: 1L, 5L, 20L</small></p>
+            <div class="form__actions">
+              <a class="card__link" href="mailto:info@chemietechniker.com?subject=Jabón de Manos Espuma Citrus">Cotizar</a>
+              <a class="card__link" href="#" aria-disabled="true">Ficha técnica (próximamente)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO: Gel de ducha avena | EJEMPLO -->
+        <article class="card" data-category="ducha" data-fragrance="avena, suave" data-ph="5.5">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Gel de Ducha Avena Suave</h3>
+            <p>Ideal para piel sensible con extracto de avena coloidal. pH 5.5.</p>
+            <p><small>Fragancias: neutro / avena | Presentaciones: 1L, 5L</small></p>
+            <div class="form__actions">
+              <a class="card__link" href="mailto:info@chemietechniker.com?subject=Gel de Ducha Avena Suave">Cotizar</a>
+              <a class="card__link" href="#" aria-disabled="true">Ficha técnica (próximamente)</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       FOOTER
+       - Información de contacto y redes (placeholders).
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer__content">
+      <div>
+        <strong>Chemietechniker</strong><br/>
+        <a href="mailto:info@chemietechniker.com">info@chemietechniker.com</a><br/>
+        <small>© <span id="year"></span> Chemietechniker. Todos los derechos reservados.</small>
+      </div>
+      <div class="footer__links">
+        <a href="#" aria-label="LinkedIn (próximamente)">LinkedIn</a>
+        <a href="#" aria-label="Facebook (próximamente)">Facebook</a>
+        <a href="#" aria-label="Instagram (próximamente)">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       SCRIPTS (sin bundler)
+       - Año dinámico del footer.
+       - Toggle de tema claro/oscuro (persistente en localStorage).
+       - Filtros del catálogo (por categoría + texto).
+       - Si ya cargas estos scripts en el home de forma global, puedes eliminar
+         el bloque duplicado aquí y mantener solo los filtros.
+       ===================================================================== -->
+  <script>
+    // 1) Actualiza el año del footer automáticamente
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 2) Toggle de tema (light/dark) con preferencia guardada
+    (function() {
+      const storageKey = 'theme';
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+
+      // Aplica preferencia guardada (si existe)
+      const saved = localStorage.getItem(storageKey);
+      if (saved === 'dark' || saved === 'light') {
+        root.setAttribute('data-theme', saved);
+      }
+
+      // Actualiza el icono del botón según el tema
+      const updateIcon = () => {
+        const isDark = root.getAttribute('data-theme') === 'dark' ||
+          (!root.hasAttribute('data-theme') &&
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (btn) btn.textContent = isDark ? '☀️' : '🌙';
+      };
+
+      // Alternar manualmente el tema
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const current = root.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          localStorage.setItem(storageKey, next);
+          updateIcon();
+        });
+      }
+
+      updateIcon();
+    })();
+
+    // 3) Filtros del catálogo (chips + búsqueda)
+    (function() {
+      const grid = document.getElementById('productGrid');       // contenedor de tarjetas
+      const chips = Array.from(document.querySelectorAll('.chip'));// botones de categoría
+      const q = document.getElementById('q');                     // input de búsqueda
+
+      // Aplicar filtros a todas las tarjetas del grid
+      const applyFilters = () => {
+        // Chip activo: 'all' por defecto
+        const active = chips.find(c => c.classList.contains('is-active'))?.dataset.filter || 'all';
+        const term = (q.value || '').trim().toLowerCase();
+
+        // Recorremos cada tarjeta (hijo directo del grid)
+        Array.from(grid.children).forEach(card => {
+          const cat = card.dataset.category;
+          const frag = (card.dataset.fragrance || '').toLowerCase();
+          const ph = (card.dataset.ph || '').toLowerCase();
+          const text = card.innerText.toLowerCase();
+
+          // Lógica de coincidencia básica
+          const matchCat = active === 'all' ? true : (cat === active);
+          const matchText = !term ? true : (text.includes(term) || frag.includes(term) || ph.includes(term));
+
+          // Mostrar/ocultar según resultado
+          card.classList.toggle('hidden', !(matchCat && matchText));
+        });
+      };
+
+      // Manejo de clicks en los chips (activación exclusiva)
+      chips.forEach(ch => ch.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('is-active'));
+        ch.classList.add('is-active');
+        applyFilters();
+      }));
+
+      // Búsqueda en vivo
+      q.addEventListener('input', applyFilters);
+    })();
+  </script>
+</body>
+</html>

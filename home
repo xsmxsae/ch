@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Chemietechniker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #0f0f0f; }
+        header { background: #161616; color: #ffe657; padding: 20px 0; text-align: center; }
+        main { background: #fff; padding: 20px; border-radius: 8px; max-width: 600px; margin: 40px auto; }
+        footer { text-align: center; color: #888; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chemietechniker</h1>
+    </header>
+    <main>
+        <h2>Inicio</h2>
+        <p>Bienvenido a la sección de inicio de Chemietechniker.</p>
+    </main>
+    <footer>
+        &copy; 2024 Chemietechniker
+    </footer>
+</body>
+</html>

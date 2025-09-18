@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chemietechniker — Especialidades químicas de alta calidad</title>
+
+  <!-- SEO básico -->
+  <meta name="description" content="Chemietechniker desarrolla, formula y comercializa especialidades químicas: desengrasantes, aromatizantes, limpiadores, y productos de cuidado personal. Envíos a toda la república." />
+  <meta name="author" content="Chemietechniker" />
+
+  <!-- Enlazamos la hoja de estilos separada -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Favicon (opcional): reemplaza la ruta si lo deseas -->
+  <link rel="icon" href="logo.ico" />
+</head>
+<body>
+  <!--
+    CABECERA DEL SITIO
+    - Incluye logotipo y navegación principal
+    - Cambia la ruta del logo por tu archivo (SVG o PNG)
+  -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="#" aria-label="Chemietechniker - Inicio">
+        <img src="logo.png" alt="Logotipo de Chemietechniker" class="brand__logo" />
+        <span class="brand__name">Chemietechniker</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#envios">Envíos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!--
+    SECCIÓN HERO
+    - Mensaje principal y llamadas a la acción
+  -->
+  <section class="hero">
+    <div class="container hero__content">
+      <h1 class="hero__title">Chemietechniker</h1>
+      <h2 class="hero__title">Especialidades químicas de alta calidad para la industria y el público en general</h2>
+      <p>
+        Desarrollamos, formulamos y comercializamos soluciones confiables:
+        desengrasantes concentrados, aromatizantes, limpiadores de superficies y
+        productos de cuidado personal.
+      </p>
+
+      <div class="cta">
+        <a class="btn btn--primary" href="#productos">Ver productos</a>
+        <a class="btn btn--ghost" href="#contacto">Solicitar cotización</a>
+      </div>
+
+      <!-- Nota: puedes poner una imagen o video de héroe cuando lo tengas -->
+      <div class="hero__media" role="img" aria-label="Ilustración de productos químicos (imagen de muestra)">
+        <img src="heroexample.png" alt="hero__content" class="hero__media" />
+      </div>
+      <div>
+        <h2 id="logo_font">Chemietechniker</h2>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    SECCIÓN DE PRODUCTOS
+    - Lista simple de categorías de productos con tarjetas
+    - Cuando tengas fotos reales, reemplaza los placeholders (.card__media)
+  -->
+  <section id="productos" class="section">
+    <div class="container">
+      <h2>Nuestros productos</h2>
+      <p class="section__lead">
+        Portafolio inicial. Pide muestras y asesoría técnica sin costo.
+      </p>
+
+      <div class="grid cards">
+        <!-- Tarjeta de producto: Desengrasantes concentrados -->
+        <article class="card">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Desengrasantes concentrados</h3>
+            <p>Eficiencia máxima para equipos, pisos y superficies industriales.</p>
+            <a class="card__link" href="#contacto">Quiero una muestra</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta de producto: Aromatizantes -->
+        <article class="card">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Aromatizantes</h3>
+            <p>Ambientes frescos y agradables en entornos institucionales.</p>
+            <a class="card__link" href="#contacto">Solicitar cotización</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta de producto: Limpiadores de superficies -->
+        <article class="card">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Limpiadores de superficies</h3>
+            <p>Fórmulas balanceadas para suciedad cotidiana y uso frecuente.</p>
+            <a class="card__link" href="#contacto">Más información</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta de producto: Cuidado personal -->
+        <article class="card">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Cuidado personal</h3>
+            <p>Shampoos, enjuagues y geles con estándares de calidad.</p>
+            <a class="card__link" href="#contacto">Pedir catálogo</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta de producto: Detergentes líquidos -->
+        <article class="card">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Detergentes líquidos</h3>
+            <p>Rendimiento y óptimos resultados en lavado de ropa e institucional.</p>
+            <a class="card__link" href="#contacto">Pedir catálogo</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta de producto: Higiene de manos y ducha -->
+        <article class="card">
+          <div class="card__media" aria-hidden="true"></div>
+          <div class="card__body">
+            <h3>Higiene de manos y ducha</h3>
+            <p>Shampoo de manos y ducha para distintos tipos de piel.</p>
+            <a class="card__link" href="#contacto">Solicitar cotización</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    SECCIÓN DE SERVICIOS
+    - Asesoría técnica, visitas físicas y documentación técnica
+  -->
+  <section id="servicios" class="section section--alt">
+    <div class="container">
+      <h2>Asesoría y soporte técnico</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Asesoría especializada</h3>
+          <p>Te ayudamos a seleccionar la solución ideal para tu proceso.</p>
+        </div>
+        <div class="feature">
+          <h3>Muestras gratuitas</h3>
+          <p>Prueba nuestros productos antes de comprar y valida resultados.</p>
+        </div>
+        <div class="feature">
+          <h3>Visitas en sitio</h3>
+          <p>Atención presencial para diagnósticos y pruebas controladas.</p>
+        </div>
+        <div class="feature">
+          <h3>Hojas técnicas</h3>
+          <p>
+            Descarga fichas y datos de seguridad cuando estén disponibles.
+            <!-- En el futuro, enlaza aquí PDFs reales -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    SECCIÓN DE ENVÍOS
+    - Cobertura y modalidades
+  -->
+  <section id="envios" class="section">
+    <div class="container">
+      <h2>Envíos a toda la república</h2>
+      <p class="section__lead">
+        En Puebla: entrega a domicilio.<br />
+        Fuera de Puebla: cobertura nacional por paquetería.
+      </p>
+    </div>
+  </section>
+
+  <!--
+    SECCIÓN DE CONTACTO
+    - Incluye un formulario sin backend (puedes integrar Formspree o tu API después)
+  -->
+  <section id="contacto" class="section section--alt">
+    <div class="container">
+      <h2>Contacto</h2>
+      <p class="section__lead">¿Tienes dudas, necesitas una cotización o una visita técnica?</p>
+
+      <!--
+        Formulario simple
+        - Actualmente no tiene backend. Opciones:
+          1) Integrar un servicio como Formspree/Netlify Forms
+          2) Conectar a tu API cuando tengas hosting
+      -->
+      <form class="form" name="contacto" method="post" data-netlify="true">
+        <div class="form__row">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Nombre completo" required />
+        </div>
+
+        <div class="form__row">
+          <label for="correo">Correo</label>
+          <input id="correo" name="correo" type="email" placeholder="tu@correo.com" required />
+        </div>
+
+        <div class="form__row">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos qué necesitas"></textarea>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Enviar</button>
+          <a class="btn btn--ghost" href="mailto:info@chemietechniker.com">Escríbenos</a>
+        </div>
+
+        <!-- Mensaje de privacidad simple -->
+        <p class="form__note">Al enviar, aceptas ser contactad@ por correo electrónico.</p>
+      </form>
+    </div>
+  </section>
+
+  <!--
+    PIE DE PÁGINA
+  -->
+  <footer class="site-footer">
+    <div class="container footer__content">
+      <div>
+        <strong>Chemietechniker</strong><br/>
+        <a href="mailto:info@chemietechniker.com">info@chemietechniker.com</a><br/>
+        <small>© <span id="year"></span> Chemietechniker. Todos los derechos reservados.</small>
+      </div>
+
+      <div class="footer__links">
+        <!-- Enlaza tus redes sociales cuando las apertures -->
+        <a href="#" aria-label="LinkedIn (próximamente)">LinkedIn</a>
+        <a href="#" aria-label="Facebook (próximamente)">Facebook</a>
+        <a href="#" aria-label="Instagram (próximamente)">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // JS mínimo para el año del footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

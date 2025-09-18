@@ -1,0 +1,4 @@
+que las letras del logo sean amarillas cuando el fondo sea negro y verdes cuando el fondo sea blanco
+
+en el hero, 3 imagenes en forma de triptico: una de un bosque (que haga alusion a lo ecologico), algo industrial
+y el interior de una casa
